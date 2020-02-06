@@ -40,5 +40,6 @@ before_install:
 script:
   - meson build -Dintrospection=false -Dviewer=false -Dgst-plugin=false -Ddocumentation=false
   - cd build
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then meson configure -Dpacket-socket=false ; fi
   - ninja
   - ninja test
